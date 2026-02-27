@@ -17,20 +17,64 @@ export default function Contact() {
     const templateAuto = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_AUTOREPLY;
 
     try {
+      if (!publicKey || !serviceId || !templateTeam || !templateAuto) {
+        throw new Error("Missing EmailJS environment variables.");
+      }
+
+      if (serviceId.includes("@")) {
+        throw new Error(
+          "EmailJS service ID looks invalid. Use your service ID (e.g. service_xxxxx), not an email address."
+        );
+      }
+
+      const formData = new FormData(formRef.current);
+      const params = Object.fromEntries(formData.entries());
+      const phoneValue = String(params.user_phone || "").trim();
+      const messageValue = String(params.message || "").trim();
+      const templateParams = {
+        ...params,
+        email: params.user_email,
+        to_email: params.user_email,
+        from_email: params.user_email,
+        reply_to: params.user_email,
+        name: params.user_name,
+        company_name: params.company_name,
+        company: params.company_name,
+        address: params.address,
+        phone: phoneValue,
+        user_phone: phoneValue,
+        phone_number: phoneValue,
+        phone_no: phoneValue,
+        mobile: phoneValue,
+        message: messageValue,
+        user_message: messageValue,
+        enquiry_message: messageValue,
+        details: messageValue,
+      };
+
       // 1) Send to your team
-      await emailjs.sendForm(serviceId, templateTeam, formRef.current, {
+      await emailjs.send(serviceId, templateTeam, templateParams, {
         publicKey,
       });
 
-      // 2) Auto-reply to customer (same form fields can be used in template)
-      await emailjs.sendForm(serviceId, templateAuto, formRef.current, {
+      // 2) Auto-reply to customer
+      await emailjs.send(serviceId, templateAuto, templateParams, {
         publicKey,
       });
 
-      setStatus({ type: "success", msg: "Thanks! We’ve received your message. Please check your email for confirmation." });
+      setStatus({
+        type: "success",
+        msg: "Thanks! We’ve received your message. Please check your email for confirmation.",
+      });
       formRef.current.reset();
     } catch (err) {
-      setStatus({ type: "error", msg: "Something went wrong while sending. Please try again." });
+      setStatus({
+        type: "error",
+        msg:
+          err?.text ||
+          err?.message ||
+          "Something went wrong while sending. Please try again.",
+      });
       console.error(err);
     } finally {
       setLoading(false);
@@ -43,16 +87,17 @@ export default function Contact() {
         <div>
           <h1 className="text-3xl md:text-4xl font-semibold">Contact</h1>
           <p className="mt-3 text-slate-600 max-w-xl">
-            Share your requirement (foil type, substrate, application). We’ll respond with the best matching options.
+            Share your requirement (foil type, substrate, application). We’ll
+            respond with the best matching options.
           </p>
 
           <div className="mt-8 rounded-2xl border border-slate-200 p-6 bg-white">
             <div className="font-semibold">Business Details</div>
             <div className="mt-3 text-sm text-slate-600 space-y-2">
-              <div>📞 +91-XXXXXXXXXX</div>
-              <div>✉️ sales@yourdomain.com</div>
-              <div>🕒 Mon–Sat, 10:00–18:00</div>
-              <div>📍 India</div>
+              <div>📞 +91-9873416620</div>
+              <div>✉️ miraixventures@gmail.com</div>
+              <div>🕒 Mon–Sun, 9:00–22:00</div>
+              <div>📍 A-28,Sector-63,Noida</div>
             </div>
           </div>
         </div>
@@ -75,7 +120,9 @@ export default function Contact() {
           <form ref={formRef} onSubmit={sendEmail} className="mt-6 space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="text-sm font-medium">Name</label>
+                <label className="text-sm font-medium">
+                  Name <span className="text-red-500">*</span>
+                </label>
                 <input
                   name="user_name"
                   required
@@ -84,7 +131,9 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium">Email</label>
+                <label className="text-sm font-medium">
+                  Email <span className="text-red-500">*</span>
+                </label>
                 <input
                   name="user_email"
                   type="email"
@@ -96,11 +145,36 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="text-sm font-medium">Phone</label>
+              <label className="text-sm font-medium">
+                Company Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                name="company_name"
+                required
+                className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-900"
+                placeholder="Your company"
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-medium">
+                Phone <span className="text-red-500">*</span>
+              </label>
               <input
                 name="user_phone"
+                type="tel"
+                required
                 className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-900"
                 placeholder="+91..."
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-medium">Address</label>
+              <input
+                name="address"
+                className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-900"
+                placeholder="Street, city, state, country"
               />
             </div>
 
@@ -138,7 +212,8 @@ export default function Contact() {
             </button>
 
             <p className="text-xs text-slate-500">
-              By submitting, you agree to receive an automated confirmation email.
+              By submitting, you agree to receive an automated confirmation
+              email.
             </p>
           </form>
         </div>
