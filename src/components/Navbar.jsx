@@ -14,9 +14,9 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="h-16 flex items-center justify-between">
+        <div className="h-20 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="h-16 w-16 rounded-xl bg-slate-900 text-white grid place-items-center font-bold">
+            <div className="h-18 w-18 rounded-xl bg-slate-900 text-white grid place-items-center font-bold">
               <img src="../src/assets/logo.jpeg" alt="logo" />
             </div>
             <div className="leading-tight">

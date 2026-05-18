@@ -3,44 +3,130 @@ import { Link } from "react-router-dom";
 
 const products = [
   {
-    id: "metallic",
-    name: "Metallic Foils",
-    desc: "High gloss gold/silver + colors for premium branding.",
+    id: "hot-stamping-foil-category",
+    name: "Hot Stamping Foil",
+    desc: "Premium transfer foils for cartons, labels, paper, board, and specialty packaging.",
     finish: "High Gloss",
     temp: "95-120C",
     use: "Packaging, labels, cosmetics",
+    image: "https://www.foilkraft.in/catimg/c1.webp",
   },
   {
-    id: "holographic",
-    name: "Holographic Foils",
-    desc: "Patterned and rainbow effects for standout packaging.",
+    id: "garment-foil",
+    name: "Garment Foil",
+    desc: "Decorative textile foils for apparel, fabric prints, and fashion detailing.",
+    finish: "Solid Color",
+    temp: "100-130C",
+    use: "Garments, textiles, fabric decoration",
+    image: "https://www.foilkraft.in/catimg/c2.webp",
+  },
+  {
+    id: "wood-grain-foil",
+    name: "Wood Grain Foil",
+    desc: "Wood texture effects for furniture, panels, and decorative surfaces.",
+    finish: "Texture Effects",
+    temp: "110-140C",
+    use: "Furniture, profiles, decorative panels",
+    image: "https://www.foilkraft.in/catimg/c3.webp",
+  },
+  {
+    id: "rexine-foil",
+    name: "Rexine Foil",
+    desc: "Foils designed for rexine, footwear, leather-like surfaces, and upholstery.",
+    finish: "High Gloss",
+    temp: "100-130C",
+    use: "Footwear, rexine, upholstery",
+    image: "https://www.foilkraft.in/catimg/c4.webp",
+  },
+  {
+    id: "digital-foil",
+    name: "Digital Foil",
+    desc: "Digital foil options for short-run personalization and premium print effects.",
     finish: "Premium Effects",
     temp: "105-130C",
-    use: "Luxury cartons, sleeves, promo packs",
+    use: "Certificates, books, packaging, magazines",
+    image: "https://www.foilkraft.in/catimg/c5.webp",
   },
   {
-    id: "matte",
-    name: "Matte / Satin",
-    desc: "Soft-touch style effect with understated luxury.",
-    finish: "Soft Look",
-    temp: "90-115C",
-    use: "Premium branding, minimal packaging",
+    id: "cold-stamping-foil",
+    name: "Cold Stamping Foil",
+    desc: "Cold application foil for fast production and flexible print workflows.",
+    finish: "High Gloss",
+    temp: "Cold process",
+    use: "Labels, cartons, high-speed print lines",
+    image: "https://www.foilkraft.in/catimg/c6.webp",
   },
   {
-    id: "pigment",
-    name: "Pigment Foils",
-    desc: "Solid color foils for bold identity and contrast.",
+    id: "mgi-foil",
+    name: "MGI Foil",
+    desc: "Specialty digital embellishment foil for premium raised effects.",
+    finish: "Premium Effects",
+    temp: "Digital process",
+    use: "Luxury print, invitations, brand collateral",
+    image: "https://www.foilkraft.in/catimg/c7.webp",
+  },
+  {
+    id: "tag-foil",
+    name: "TAG Foil",
+    desc: "Foil options suited for tags, trims, labels, and brand identifiers.",
     finish: "Solid Color",
     temp: "95-125C",
-    use: "Labels, barcodes, dark substrates",
+    use: "Tags, labels, brand trims",
+    image: "https://www.foilkraft.in/catimg/c8.webp",
   },
   {
-    id: "specialty",
-    name: "Specialty Effects",
-    desc: "Textures, diffraction patterns, custom looks.",
+    id: "stamping-foils",
+    name: "Stamping Foils",
+    desc: "Classic hot stamping foils for crisp transfer and premium shine.",
+    finish: "High Gloss",
+    temp: "95-120C",
+    use: "Packaging, paper products, labels",
+    image: "https://www.foilkraft.in/medicine/p1.jpg",
+  },
+  {
+    id: "multi-color-hot-stamping-foil",
+    name: "Multi Color Hot Stamping Foil",
+    desc: "Multicolor foil finishes for decorative, attention-grabbing applications.",
     finish: "Premium Effects",
     temp: "100-135C",
-    use: "Gift packs, event prints, custom work",
+    use: "Gift packs, premium print, custom branding",
+    image: "https://www.foilkraft.in/medicine/p2.jpg",
+  },
+  {
+    id: "polypropylene-hot-stamping-foil",
+    name: "Polypropylene Hot Stamping Foil",
+    desc: "Transfer foil tuned for polypropylene and film-based substrates.",
+    finish: "High Gloss",
+    temp: "105-130C",
+    use: "Plastic packaging, films, labels",
+    image: "https://www.foilkraft.in/medicine/p3.jpg",
+  },
+  {
+    id: "flower-hot-stamping-foil",
+    name: "Flower Hot Stamping Foil",
+    desc: "Patterned floral foil effects for decorative packaging and gifting.",
+    finish: "Texture Effects",
+    temp: "100-130C",
+    use: "Gift packaging, craft, decorative print",
+    image: "https://www.foilkraft.in/medicine/p4.jpg",
+  },
+  {
+    id: "colored-hot-stamping-foil",
+    name: "Colored Hot Stamping Foil",
+    desc: "Strong colored foil shades for identity, contrast, and decorative accents.",
+    finish: "Solid Color",
+    temp: "95-125C",
+    use: "Labels, packaging, dark substrates",
+    image: "https://www.foilkraft.in/medicine/p5.jpg",
+  },
+  {
+    id: "hot-stamping-foil",
+    name: "Hot Stamping Foil",
+    desc: "General-purpose foil for sharp transfer and consistent press performance.",
+    finish: "High Gloss",
+    temp: "95-120C",
+    use: "Cartons, labels, stationery, books",
+    image: "https://www.foilkraft.in/medicine/p6.jpg",
   },
 ];
 
@@ -48,7 +134,7 @@ const finishFilters = [
   "All",
   "High Gloss",
   "Premium Effects",
-  "Soft Look",
+  "Texture Effects",
   "Solid Color",
 ];
 
@@ -143,40 +229,51 @@ export default function Products() {
           return (
             <div
               key={p.id}
-              className="rounded-2xl border border-slate-200 p-6 bg-white hover:shadow-sm transition"
+              className="overflow-hidden rounded-2xl border border-slate-200 bg-white hover:shadow-sm transition"
             >
-              <div className="flex items-start justify-between gap-4">
-                <div className="font-semibold">{p.name}</div>
-                <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium text-slate-700">
+              <div className="relative aspect-[4/3] bg-slate-100">
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-medium text-slate-800 shadow-sm">
                   {p.finish}
                 </span>
               </div>
-              <div className="mt-2 text-sm text-slate-600">{p.desc}</div>
 
-              <div className="mt-4 space-y-1 text-xs text-slate-500">
-                <div>
-                  <span className="font-medium text-slate-600">Typical use:</span>{" "}
-                  {p.use}
+              <div className="p-5">
+                <div className="font-semibold">{p.name}</div>
+                <div className="mt-2 text-sm text-slate-600">{p.desc}</div>
+
+                <div className="mt-4 space-y-1 text-xs text-slate-500">
+                  <div>
+                    <span className="font-medium text-slate-600">
+                      Typical use:
+                    </span>{" "}
+                    {p.use}
+                  </div>
+                  <div>
+                    <span className="font-medium text-slate-600">
+                      Temp range:
+                    </span>{" "}
+                    {p.temp}
+                  </div>
                 </div>
-                <div>
-                  <span className="font-medium text-slate-600">
-                    Temp range:
-                  </span>{" "}
-                  {p.temp}
-                </div>
+
+                <button
+                  onClick={() => toggleCompare(p.id)}
+                  disabled={!selected && compareIds.length >= 3}
+                  className={`mt-4 w-full rounded-lg border px-3 py-2 text-xs font-medium transition ${
+                    selected
+                      ? "border-slate-900 bg-slate-900 text-white"
+                      : "border-slate-300 text-slate-700 hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                  }`}
+                >
+                  {selected ? "Added to compare" : "Add to compare"}
+                </button>
               </div>
-
-              <button
-                onClick={() => toggleCompare(p.id)}
-                disabled={!selected && compareIds.length >= 3}
-                className={`mt-4 w-full rounded-lg border px-3 py-2 text-xs font-medium transition ${
-                  selected
-                    ? "border-slate-900 bg-slate-900 text-white"
-                    : "border-slate-300 text-slate-700 hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed"
-                }`}
-              >
-                {selected ? "Added to compare" : "Add to compare"}
-              </button>
             </div>
           );
         })}

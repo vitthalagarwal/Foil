@@ -5,6 +5,7 @@ export default function Carousel({
   intervalMs = 3000,
   className = "",
   aspectClass = "aspect-[16/9]",
+  frameClassName = "rounded-2xl border border-slate-200",
 }) {
   const safeImages = useMemo(() => images.filter(Boolean), [images]);
   const [index, setIndex] = useState(0);
@@ -28,13 +29,15 @@ export default function Carousel({
 
   if (!safeImages.length) {
     return (
-      <div className={`w-full rounded-2xl border border-slate-200 bg-slate-50 ${aspectClass} ${className}`} />
+      <div
+        className={`w-full bg-slate-50 ${aspectClass} ${frameClassName} ${className}`}
+      />
     );
   }
 
   return (
     <div className={`relative w-full ${className}`}>
-      <div className={`overflow-hidden rounded-2xl border border-slate-200 bg-black ${aspectClass}`}>
+      <div className={`overflow-hidden bg-black ${aspectClass} ${frameClassName}`}>
         <div
           className="h-full w-full flex transition-transform duration-500"
           style={{ transform: `translateX(-${index * 100}%)` }}
