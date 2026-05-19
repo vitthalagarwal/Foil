@@ -7,9 +7,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-10">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <div className="font-semibold text-slate-900">
-              Hot Stamping Foil
-            </div>
+            <div className="font-semibold text-slate-900">MiraiXventures</div>
             <p className="text-sm text-slate-600 mt-2">
               Premium foils for packaging, labels, cosmetics, stationery and
               brand accents.
@@ -48,7 +46,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 text-xs text-slate-500">
-          © {new Date().getFullYear()} Hot Stamping Foil. All rights reserved.
+          © {new Date().getFullYear()} MiraiXventures. All rights reserved.
         </div>
       </div>
     </footer>
