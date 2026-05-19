@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import logo from "../assets/Logo-cropped.png";
 
 const navLinkClass = ({ isActive }) =>
   `px-3 py-2 rounded-md text-sm font-medium transition ${
@@ -16,17 +17,21 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="h-20 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="h-18 w-18 rounded-xl bg-slate-900 text-white grid place-items-center font-bold">
-              <img src="../src/assets/logo.jpeg" alt="logo" />
+            <div className="h-16 w-36 overflow-hidden grid place-items-center">
+              <img
+                src={logo}
+                alt="Mirai X Ventures logo"
+                className="h-full w-full object-contain"
+              />
             </div>
-            <div className="leading-tight">
+            {/* <div className="leading-tight">
               <div className="font-semibold text-2xl text-blue-900 ">
                 Mirai X Ventures
               </div>
               <div className="text-xs text-yellow-500 ">
                 Premium finish films
               </div>
-            </div>
+            </div> */}
           </Link>
 
           {/* Desktop */}

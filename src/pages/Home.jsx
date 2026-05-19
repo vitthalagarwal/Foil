@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Carousel from "../components/Carousel";
+import boxfoil from "../assets/boxfoil-landscape.jpg";
+import colorfoils from "../assets/colorfoils-landscape.jpg";
+import goldfoil from "../assets/goldfoil-landscape.jpg";
+import manyfoil from "../assets/manyfoil-landscape.jpg";
 
 // Replace these with your real product images (put files in /public/images/...)
 // const heroSlides = [
@@ -10,9 +14,10 @@ import Carousel from "../components/Carousel";
 // ];
 
 const topCarouselSlides = [
-  "https://www.foilkraft.in/images/slider1-home1.jpg",
-  "https://www.foilkraft.in/images/slider2-home1.jpg",
-  "https://www.foilkraft.in/images/slider3-home1.jpg",
+  goldfoil,
+  manyfoil,
+  colorfoils,
+  boxfoil,
 ];
 
 const featureBanners = [
@@ -127,8 +132,9 @@ export default function Home() {
         <Carousel
           images={topCarouselSlides}
           intervalMs={3200}
-          aspectClass="h-[calc(100vh-5rem)] min-h-[420px]"
+          aspectClass="h-[280px] sm:h-[360px] md:h-[calc(100vh-5rem)] md:min-h-[420px]"
           frameClassName="rounded-none border-0"
+          imageClassName="object-cover"
           className="shadow-sm"
         />
       </section>

@@ -6,6 +6,8 @@ export default function Carousel({
   className = "",
   aspectClass = "aspect-[16/9]",
   frameClassName = "rounded-2xl border border-slate-200",
+  imageClassName = "object-cover",
+  fillBackground = false,
 }) {
   const safeImages = useMemo(() => images.filter(Boolean), [images]);
   const [index, setIndex] = useState(0);
@@ -37,20 +39,29 @@ export default function Carousel({
 
   return (
     <div className={`relative w-full ${className}`}>
-      <div className={`overflow-hidden bg-black ${aspectClass} ${frameClassName}`}>
+      <div className={`overflow-hidden bg-slate-100 ${aspectClass} ${frameClassName}`}>
         <div
           className="h-full w-full flex transition-transform duration-500"
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
           {safeImages.map((src, i) => (
             <div key={i} className="min-w-full h-full relative">
+              {fillBackground && (
+                <img
+                  src={src}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full scale-110 object-cover blur-xl opacity-70"
+                  loading="lazy"
+                />
+              )}
               <img
                 src={src}
                 alt={`slide-${i}`}
-                className="absolute inset-0 h-full w-full object-cover"
+                className={`absolute inset-0 h-full w-full ${imageClassName}`}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
             </div>
           ))}
         </div>
